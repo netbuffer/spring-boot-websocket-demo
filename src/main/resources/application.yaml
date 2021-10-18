@@ -1,0 +1,57 @@
+server:
+  port: 17000
+  servlet:
+    session:
+      timeout: 30m
+  # 开启优雅停机
+  shutdown: graceful
+  http2:
+    enabled: true
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  task:
+    execution:
+      pool:
+        core-size: 4
+        queue-capacity: 20
+        max-size: 10
+        keep-alive: "30s"
+  application:
+    name: spring-boot-websocket-demo
+    # 在actuator监控中,当属性名中包含：password、secret、key这些敏感词,在返回它们的时候会使用*来掩码
+    key: test-actuator
+
+management:
+  info:
+    git:
+      mode: full
+  health:
+    defaults:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        # 开启actuator所有监控端点
+        include: "*"
+    enabled-by-default: true
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    root: WARN
+    web: debug
+    org:
+      springframework:
+        web: info
+    cn:
+      netbuffer: DEBUG
+info:
+  app:
+    name: test-info-api
+
+# 输出更多日志信息（embedded container, Hibernate, and Spring Boot）
+debug: false
