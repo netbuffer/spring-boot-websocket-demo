@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>会话列表</title>
+    <link href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div th:each="item,it : ${sessions}">
+    <div>index:<span th:text="${it.index}"></span></div>
+    <div>item:<span th:text="${item}"></span></div>
+</body>
+</html>
