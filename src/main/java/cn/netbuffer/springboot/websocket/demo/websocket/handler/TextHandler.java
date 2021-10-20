@@ -10,7 +10,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class TextHandler extends TextWebSocketHandler {
 
     private static final String HEARTBEAT_PING = "PING";
-    private static final String HEARTBEAT_PONG = "PING";
+    private static final String HEARTBEAT_PONG = "PONG";
     private static final TextMessage HEARTBEAT_PONG_MESSAGE = new TextMessage(HEARTBEAT_PONG);
 
     @Override
