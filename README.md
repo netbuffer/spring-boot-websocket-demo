@@ -6,3 +6,6 @@
 ### help
 * https://docs.spring.io/spring-framework/docs/5.3.4/reference/html/web.html#websocket
 * https://www.ruanyifeng.com/blog/2017/05/websocket.html
+
+### articles
+* [使用SpringBoot搭建实时通信服务](https://www.toutiao.com/i7020780189747544609)
