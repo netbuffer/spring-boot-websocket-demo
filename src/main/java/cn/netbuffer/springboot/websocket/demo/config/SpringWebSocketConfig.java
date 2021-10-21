@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 @Slf4j
 @Configuration
@@ -16,7 +17,10 @@ public class SpringWebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 //        registry.addHandler(buildTextHandler(), "/ws").setAllowedOrigins("*");
-        registry.addHandler(buildMessageHandler(), "/ws").setAllowedOrigins("*");
+        registry.addHandler(buildMessageHandler(), "/ws")
+                //复制HttpSession中的属性到WebSocketSession中
+                .addInterceptors(new HttpSessionHandshakeInterceptor())
+                .setAllowedOrigins("*");
     }
 
     @Bean

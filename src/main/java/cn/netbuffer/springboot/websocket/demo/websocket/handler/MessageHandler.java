@@ -12,6 +12,7 @@ public class MessageHandler extends AbstractWebSocketHandler {
         super.afterConnectionEstablished(session);
         SessionManager.put(session.getId(), session);
         log.info("session[{}] afterConnectionEstablished", session.getId());
+        log.info("get WebSocketSession attributes={}",session.getAttributes());
     }
 
     @Override

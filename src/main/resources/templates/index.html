@@ -23,6 +23,22 @@
                 alert("send success");
             });
     }
+
+    function set_session() {
+        var key = prompt("请输入key");
+        var value = prompt("请输入value");
+        fetch("/http/session/set", {
+            body: ({"key": key, "value": value}),
+            method: 'POST'
+        })
+            .then(function (response) {
+                return response;
+            })
+            .then(function (response) {
+                console.log(`send msg success`);
+                alert("send success");
+            });
+    }
 </script>
 </body>
 </html>
