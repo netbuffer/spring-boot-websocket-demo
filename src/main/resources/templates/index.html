@@ -6,8 +6,23 @@
     <link href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css" rel="stylesheet"/>
 </head>
 <body>
-<div th:each="item,it : ${sessions}">
-    <div>index:<span th:text="${it.index}"></span></div>
-    <div>item:<span th:text="${item}"></span></div>
+<ul th:each="item,it : ${sessions}">
+<!--    <li>index:<span th:text="${it.index}"></span></li>-->
+    <li>会话:<span th:text="${item}"></span><button th:onclick="send_msg([[${item}]])">send</button></li>
+</ul>
+<script>
+    function send_msg(key) {
+        console.log("key:%o", key);
+        var msg = prompt("请输入消息内容");
+        fetch("/ws/" + key + "/send?msg=" + msg)
+            .then(function (response) {
+                return response;
+            })
+            .then(function (response) {
+                console.log(`send msg success`);
+                alert("send success");
+            });
+    }
+</script>
 </body>
 </html>

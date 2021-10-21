@@ -9,12 +9,20 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 @Slf4j
 public class TextHandler extends TextWebSocketHandler {
 
+    private static final String HEARTBEAT_PING = "PING";
+    private static final String HEARTBEAT_PONG = "PONG";
+    private static final TextMessage HEARTBEAT_PONG_MESSAGE = new TextMessage(HEARTBEAT_PONG);
+
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         if (session.isOpen()) {
             log.info("receive websocket message：{} session:{}", message, session.getId());
-            TextMessage returnMessage = new TextMessage(message.getPayload() + " received at server");
-            session.sendMessage(returnMessage);
+            if (message.getPayload().equals(HEARTBEAT_PING)) {
+                session.sendMessage(HEARTBEAT_PONG_MESSAGE);
+            } else {
+                TextMessage returnMessage = new TextMessage(message.getPayload() + " received at server");
+                session.sendMessage(returnMessage);
+            }
         }
     }
 
