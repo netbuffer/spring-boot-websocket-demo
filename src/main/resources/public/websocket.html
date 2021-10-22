@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>websocket</title>
+    <link href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css" rel="stylesheet"/>
+    <script src="/reconnecting-websocket.js"></script>
+    <script type="text/javascript">
+        var ws = new ReconnectingWebSocket("ws://localhost:17000/ws", null, {
+            debug: true,
+            automaticOpen: false,
+            reconnectInterval: 3000
+        });
+
+        ws.onopen = function () {
+            console.log("Connection open ...");
+        }
+
+        ws.onmessage = function (r) {
+            console.log("Received Message: " + r.data);
+        }
+
+        ws.onclose = function () {
+            console.log("Connection closed.");
+        }
+
+        function connect() {
+            ws.open();
+        }
+
+        function set_session() {
+            var key = prompt("请输入key");
+            var value = prompt("请输入value");
+            var formData = new FormData();
+            formData.append('key', key);
+            formData.append('value', value);
+            fetch("/http/session/set", {
+                body: formData,
+                method: 'POST'
+            })
+                .then(function (response) {
+                    return response;
+                })
+                .then(function (response) {
+                    console.log(`send msg success`);
+                    alert("send success");
+                });
+        }
+    </script>
+</head>
+<body>
+<div>
+    <button onclick="connect()">connect</button>
+    <button onclick="set_session()">set_session</button>
+</div>
+</body>
+</html>

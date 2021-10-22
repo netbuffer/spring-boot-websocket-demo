@@ -11,34 +11,6 @@
     <li>会话:<span th:text="${item}"></span><button th:onclick="send_msg([[${item}]])">send</button></li>
 </ul>
 <script>
-    function send_msg(key) {
-        console.log("key:%o", key);
-        var msg = prompt("请输入消息内容");
-        fetch("/ws/" + key + "/send?msg=" + msg)
-            .then(function (response) {
-                return response;
-            })
-            .then(function (response) {
-                console.log(`send msg success`);
-                alert("send success");
-            });
-    }
-
-    function set_session() {
-        var key = prompt("请输入key");
-        var value = prompt("请输入value");
-        fetch("/http/session/set", {
-            body: ({"key": key, "value": value}),
-            method: 'POST'
-        })
-            .then(function (response) {
-                return response;
-            })
-            .then(function (response) {
-                console.log(`send msg success`);
-                alert("send success");
-            });
-    }
 </script>
 </body>
 </html>
