@@ -1,5 +1,6 @@
 package cn.netbuffer.springboot.websocket.demo.config;
 
+import cn.netbuffer.springboot.websocket.demo.interceptor.RbacHandshakeInterceptor;
 import cn.netbuffer.springboot.websocket.demo.websocket.handler.MessageHandler;
 import cn.netbuffer.springboot.websocket.demo.websocket.handler.TextHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ public class SpringWebSocketConfig implements WebSocketConfigurer {
 //        registry.addHandler(buildTextHandler(), "/ws").setAllowedOrigins("*");
         registry.addHandler(buildMessageHandler(), "/ws")
                 //复制HttpSession中的属性到WebSocketSession中
+                .addInterceptors(new RbacHandshakeInterceptor())
                 .addInterceptors(new HttpSessionHandshakeInterceptor())
                 .setAllowedOrigins("*");
     }

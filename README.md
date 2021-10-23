@@ -8,6 +8,7 @@
 * https://docs.spring.io/spring-framework/docs/5.3.4/reference/html/web.html#websocket
 * https://www.ruanyifeng.com/blog/2017/05/websocket.html
 * https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
+* LoggingWebSocketHandlerDecorator/ExceptionWebSocketHandlerDecorator默认启用：https://docs.spring.io/spring-framework/docs/5.3.4/reference/html/web.html#websocket-server-handshake
 
 ### articles
 * [使用SpringBoot搭建实时通信服务](https://www.toutiao.com/i7020780189747544609)

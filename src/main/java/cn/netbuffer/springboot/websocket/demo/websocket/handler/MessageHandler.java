@@ -24,6 +24,10 @@ public class MessageHandler extends AbstractWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         log.info("session[{}] receive text message={}", session.getId(), message);
+        //for test error
+        if(message.getPayload().equals("error")){
+            throw new RuntimeException(this.getClass().getSimpleName()+".handleTextMessage error");
+        }
     }
 
     @Override
