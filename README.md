@@ -2,7 +2,7 @@
 ![](https://img.shields.io/static/v1?label=java&message=1.8&color=blue)
 ![](https://img.shields.io/static/v1?label=spring-boot&message=2.4.5.RELEASE&color=blue)
 ![](https://img.shields.io/static/v1?label=junit&message=4.13.2&color=black)
-![](https://img.shields.io/static/v1?label=reconnecting-websocket&color=black)
+![](https://img.shields.io/static/v1?label=reconnecting-websocket&message=joewalnes&color=)
 
 ### help
 * https://docs.spring.io/spring-framework/docs/5.3.4/reference/html/web.html#websocket
@@ -11,3 +11,4 @@
 
 ### articles
 * [使用SpringBoot搭建实时通信服务](https://www.toutiao.com/i7020780189747544609)
+* [SpringBoot整合websocket获取http会话信息](https://www.toutiao.com/i7021883583832900108)
