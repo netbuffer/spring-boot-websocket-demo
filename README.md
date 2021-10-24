@@ -13,3 +13,4 @@
 ### articles
 * [使用SpringBoot搭建实时通信服务](https://www.toutiao.com/i7020780189747544609)
 * [SpringBoot整合websocket获取http会话信息](https://www.toutiao.com/i7021883583832900108)
+* [基于SpringBoot的websocket连接访问控制方案](https://www.toutiao.com/i7022486245636948517)
