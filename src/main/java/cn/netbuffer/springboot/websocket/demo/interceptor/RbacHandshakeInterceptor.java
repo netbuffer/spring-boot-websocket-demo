@@ -8,7 +8,6 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
@@ -22,10 +21,12 @@ public class RbacHandshakeInterceptor implements HandshakeInterceptor {
     public boolean beforeHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Map<String, Object> map) throws Exception {
         log.debug("beforeHandshake {} to {} websocket request", serverHttpRequest.getMethodValue(), serverHttpRequest.getURI());
         log.debug("serverHttpRequest.getHeaders()={}", serverHttpRequest.getHeaders());
-        serverHttpResponse.setStatusCode(HttpStatus.FORBIDDEN);
 //        boolean result = handleByCookie(serverHttpRequest);
 //        boolean result = handleByQueryString(serverHttpRequest);
         boolean result = handleByHttpSession(serverHttpRequest);
+        if (!result) {
+            serverHttpResponse.setStatusCode(HttpStatus.FORBIDDEN);
+        }
         return result;
     }
 
