@@ -2,6 +2,8 @@ package cn.netbuffer.springboot.websocket.demo.config;
 
 import cn.netbuffer.springboot.websocket.demo.interceptor.RbacHandshakeInterceptor;
 import cn.netbuffer.springboot.websocket.demo.websocket.handler.MessageHandler;
+import cn.netbuffer.springboot.websocket.demo.websocket.handler.PersistenceToDatabaseWebSocketHandlerDecorator;
+import cn.netbuffer.springboot.websocket.demo.websocket.handler.PersistenceToElasticsearchWebSocketHandlerDecorator;
 import cn.netbuffer.springboot.websocket.demo.websocket.handler.TextHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +34,7 @@ public class SpringWebSocketConfig implements WebSocketConfigurer {
 
     @Bean
     public WebSocketHandler buildMessageHandler() {
-        return new MessageHandler();
+        return new PersistenceToElasticsearchWebSocketHandlerDecorator(new PersistenceToDatabaseWebSocketHandlerDecorator(new MessageHandler()));
     }
 
 }

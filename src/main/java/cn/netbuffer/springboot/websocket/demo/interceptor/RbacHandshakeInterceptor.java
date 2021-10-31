@@ -22,8 +22,8 @@ public class RbacHandshakeInterceptor implements HandshakeInterceptor {
         log.debug("beforeHandshake {} to {} websocket request", serverHttpRequest.getMethodValue(), serverHttpRequest.getURI());
         log.debug("serverHttpRequest.getHeaders()={}", serverHttpRequest.getHeaders());
 //        boolean result = handleByCookie(serverHttpRequest);
-//        boolean result = handleByQueryString(serverHttpRequest);
-        boolean result = handleByHttpSession(serverHttpRequest);
+        boolean result = handleByQueryString(serverHttpRequest);
+//        boolean result = handleByHttpSession(serverHttpRequest);
         if (!result) {
             serverHttpResponse.setStatusCode(HttpStatus.FORBIDDEN);
         }
